@@ -1,4 +1,4 @@
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/apps/gcloud/bin:$PATH"
 
 function preexec() {
   timer=$(($(date +%s%N)/1000000))
