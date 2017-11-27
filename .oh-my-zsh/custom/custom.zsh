@@ -15,6 +15,7 @@ if [ -f "$HOME/apps/google-cloud-sdk/completion.zsh.inc" ]; then
 fi
 
 alias tcurl='curl --socks5-hostname 127.0.0.1:9050'
+export EDITOR=vim
 
 function preexec() {
   timer=$(($(date +%s%N)/1000000))
