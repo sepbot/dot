@@ -4,6 +4,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+alias tcurl='curl --socks5-hostname 127.0.0.1:9050'
+
 function preexec() {
   timer=$(($(date +%s%N)/1000000))
 }
