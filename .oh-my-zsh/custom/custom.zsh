@@ -1,4 +1,4 @@
-export PATH="$HOME/.local/bin:/snap/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/bini:/snap/bin:$PATH"
 
 export GOPATH="$HOME/workspace/go"
 
@@ -15,6 +15,7 @@ if [ -f "$HOME/apps/google-cloud-sdk/completion.zsh.inc" ]; then
 fi
 
 alias tcurl='curl --socks5-hostname 127.0.0.1:9050'
+export EDITOR=vim
 
 function preexec() {
   timer=$(($(date +%s%N)/1000000))
