@@ -1,4 +1,4 @@
-export PATH="$HOME/.local/bin:$HOME/bini:/snap/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/bin:$HOME/.anaconda/bin:$PATH"
 
 export GOPATH="$HOME/workspace/go"
 
