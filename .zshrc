@@ -17,7 +17,7 @@ ZSH_THEME="custom"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -59,7 +59,7 @@ ZSH_THEME="custom"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 PATH=$HOME/.anaconda/bin:$PATH
-plugins=(git virtualenvwrapper)
+plugins=(git zsh-autosuggestions virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
