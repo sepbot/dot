@@ -22,4 +22,5 @@ export EDITOR=vim
 export GRAPHVIZ_DOT="$(which dot)"
 
 alias changeuser='"/System/Library/CoreServices/Menu Extras/User.menu/Contents/Resources/CGSession" -suspend'
+alias groot='cd $(git rev-parse --show-toplevel)'
 
