@@ -10,10 +10,6 @@ export PATH="$ANDROID_HOME/platform-tools:$PATH"
 
 export PATH="${PATH}:/usr/local/bin"
 
-if [[ $OS == 'Darwin' ]]; then
-  export PATH="$HOME/.brew/opt/go/libexec/bin:$HOME/Applications/Docker.app/Contents/Resources/bin:$PATH"
-fi
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
@@ -24,6 +20,11 @@ fi
 
 if [ -f "$HOME/Applications/google-cloud-sdk/completion.zsh.inc" ]; then
   source "$HOME/Applications/google-cloud-sdk/completion.zsh.inc"
+fi
+
+if [[ $OS == 'Darwin' ]]; then
+  export PATH="$HOME/.brew/opt/go/libexec/bin:$HOME/Applications/Docker.app/Contents/Resources/bin:$PATH"
+  export PATH="$PATH:$HOME/Applications/go_appengine"
 fi
 
 export EDITOR=vim
