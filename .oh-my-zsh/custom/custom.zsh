@@ -8,7 +8,8 @@ export PATH="$GOPATH/bin:$PATH"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$ANDROID_HOME/platform-tools:$PATH"
 
-export PATH="${PATH}:/usr/local/bin"
+export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$PATH:/usr/local/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
