@@ -7,6 +7,7 @@ export PATH="$GOPATH/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:$HOME/Applications/flutter/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
