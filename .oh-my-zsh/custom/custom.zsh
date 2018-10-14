@@ -5,7 +5,6 @@ export PATH="$HOME/bin:$HOME/.anaconda/bin:$HOME/.brew/bin:$HOME/.cargo/bin:$PAT
 export GOPATH="$HOME/Workspace/go"
 export PATH="$GOPATH/bin:$PATH"
 
-export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$PATH:/usr/local/bin"
 export PATH="$PATH:$HOME/Applications/flutter/bin"
 
