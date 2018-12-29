@@ -33,6 +33,8 @@ export PATH="$ANDROID_HOME/platform-tools:$PATH"
 export EDITOR=vim
 export GRAPHVIZ_DOT="$(which dot)"
 
+export GOOGLE_CLOUD_SDK="$HOME/Applications/google-cloud-sdk"
+
 export CLOUDSDK_PYTHON="/usr/bin/python"
 
 alias groot='cd $(git rev-parse --show-toplevel)'
