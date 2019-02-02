@@ -4,6 +4,7 @@ export PATH="$HOME/bin:$HOME/.anaconda/bin:$HOME/.brew/bin:$HOME/.cargo/bin:$PAT
 
 export GOPATH="$HOME/Workspace/go"
 export PATH="$GOPATH/bin:$PATH"
+export PATH="$HOME/.brew/opt/go/libexec/bin:$PATH"
 
 export PATH="$PATH:/usr/local/bin"
 export PATH="$PATH:$HOME/Applications/flutter/bin"
@@ -20,14 +21,9 @@ if [ -f "$HOME/Applications/google-cloud-sdk/completion.zsh.inc" ]; then
   source "$HOME/Applications/google-cloud-sdk/completion.zsh.inc"
 fi
 
-if [[ $OS == 'Darwin' ]]; then
-  export ANDROID_HOME="$HOME/Library/Android/sdk"
-  export PATH="$HOME/.brew/opt/go/libexec/bin:$HOME/Applications/Docker.app/Contents/Resources/bin:$PATH"
-  export PATH="$PATH:$HOME/Applications/go_appengine"
-elif [[ $OS == 'Linux' ]]; then
-  export ANDROID_HOME="$HOME/Applications/android-sdk"
-fi
+export PATH="$HOME/Applications/Docker.app/Contents/Resources/bin:$PATH"
 
+export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$ANDROID_HOME/platform-tools:$PATH"
 
 export EDITOR=vim
