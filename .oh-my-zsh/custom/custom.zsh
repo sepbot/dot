@@ -22,6 +22,7 @@ if [ -f "$HOME/Applications/google-cloud-sdk/completion.zsh.inc" ]; then
 fi
 
 export PATH="$HOME/.local/lib/aws/bin:$PATH"
+source "$HOME/.local/lib/aws/bin/aws_zsh_completer.sh"
 
 export PATH="$HOME/Applications/Docker.app/Contents/Resources/bin:$PATH"
 
