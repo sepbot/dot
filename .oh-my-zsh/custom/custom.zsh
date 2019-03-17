@@ -1,6 +1,7 @@
 OS=$(uname)
 
-export PATH="$HOME/bin:$HOME/.anaconda/bin:$HOME/.brew/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.brew/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$HOME/.conda/bin"
 
 export GOPATH="$HOME/Workspace/go"
 export PATH="$GOPATH/bin:$PATH"
