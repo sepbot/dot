@@ -19,6 +19,8 @@ ZSH_THEME="custom"
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
 
+FPATH=$HOME/.brew/share/zsh/site-functions:$FPATH
+
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
