@@ -1,5 +1,7 @@
 local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
 
+VIRTUAL_ENV_DISABLE_PROMPT=1
+
 function gcloud_project_prompt {
   echo "%{$fg_bold[blue]%}gcloud:(%{$fg[yellow]%}`gcloud config get-value project`%{$fg[blue]%})%{$reset_color%} "
 }
