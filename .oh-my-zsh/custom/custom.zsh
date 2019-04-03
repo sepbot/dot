@@ -6,6 +6,8 @@ export GOPATH="$HOME/Workspace/go"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.brew/opt/go/libexec/bin:$PATH"
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 export PATH="$PATH:/usr/local/bin"
 export PATH="$PATH:$HOME/Applications/flutter/bin"
 
