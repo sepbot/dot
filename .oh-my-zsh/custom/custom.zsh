@@ -1,21 +1,31 @@
-OS=$(uname)
+OS="$(uname)"
 
 export DISABLE_UPDATE_PROMPT=true
 
-export PATH="$HOME/bin:$HOME/.brew/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
-export GOPATH="$HOME/Workspace/go"
-export PATH="$GOPATH/bin:$PATH"
-export PATH="$HOME/.brew/opt/go/libexec/bin:$PATH"
+if [[ "${OS}" == 'Darwin' ]]; then
+  export PATH="$HOME/.brew/bin:/usr/local/bin:$PATH"
+fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-export PATH="$PATH:/usr/local/bin"
+export GOPATH="$HOME/Workspace/go"
+export PATH="$GOPATH/bin:$PATH"
+if [[ "${OS}" == 'Darwin' ]]; then
+  export PATH="$HOME/.brew/opt/go/libexec/bin:$PATH"
+fi
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
 export PATH="$PATH:$HOME/Applications/flutter/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+export GOOGLE_CLOUD_SDK="$HOME/Applications/google-cloud-sdk"
+export CLOUDSDK_PYTHON="/usr/bin/python"
 
 if [ -f "$HOME/Applications/google-cloud-sdk/path.zsh.inc" ]; then
   source "$HOME/Applications/google-cloud-sdk/path.zsh.inc"
@@ -35,10 +45,6 @@ export PATH="$ANDROID_HOME/platform-tools:$PATH"
 
 export EDITOR=vim
 export GRAPHVIZ_DOT="$(which dot)"
-
-export GOOGLE_CLOUD_SDK="$HOME/Applications/google-cloud-sdk"
-
-export CLOUDSDK_PYTHON="/usr/bin/python"
 
 alias groot='cd $(git rev-parse --show-toplevel)'
 unalias gb
