@@ -1,5 +1,7 @@
 OS=$(uname)
 
+export DISABLE_UPDATE_PROMPT=true
+
 export PATH="$HOME/bin:$HOME/.brew/bin:$HOME/.cargo/bin:$PATH"
 
 export GOPATH="$HOME/Workspace/go"
