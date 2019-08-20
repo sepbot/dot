@@ -35,9 +35,6 @@ if [ -f "$HOME/Applications/google-cloud-sdk/completion.zsh.inc" ]; then
   source "$HOME/Applications/google-cloud-sdk/completion.zsh.inc"
 fi
 
-export PATH="$PATH:$HOME/.local/lib/aws/bin"
-source "$HOME/.local/lib/aws/bin/aws_zsh_completer.sh"
-
 export PATH="$HOME/Applications/Docker.app/Contents/Resources/bin:$PATH"
 
 export ANDROID_HOME="$HOME/Library/Android/sdk"
