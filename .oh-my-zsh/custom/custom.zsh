@@ -1,7 +1,5 @@
 OS="$(uname)"
 
-export DISABLE_UPDATE_PROMPT=true
-
 export PATH="$HOME/bin:$PATH"
 
 if [[ "${OS}" == 'Darwin' ]]; then
@@ -23,17 +21,6 @@ export PATH="$PATH:$HOME/Applications/flutter/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-export GOOGLE_CLOUD_SDK="$HOME/Applications/google-cloud-sdk"
-export CLOUDSDK_PYTHON="/usr/bin/python"
-
-if [ -f "$HOME/Applications/google-cloud-sdk/path.zsh.inc" ]; then
-  source "$HOME/Applications/google-cloud-sdk/path.zsh.inc"
-fi
-
-if [ -f "$HOME/Applications/google-cloud-sdk/completion.zsh.inc" ]; then
-  source "$HOME/Applications/google-cloud-sdk/completion.zsh.inc"
-fi
 
 export PATH="$HOME/Applications/Docker.app/Contents/Resources/bin:$PATH"
 
