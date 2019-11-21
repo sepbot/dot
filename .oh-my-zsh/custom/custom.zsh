@@ -6,8 +6,6 @@ if [[ "${OS}" == 'Darwin' ]]; then
   export PATH="$HOME/.brew/bin:/usr/local/bin:$PATH"
 fi
 
-export PATH="$HOME/.cargo/bin:$PATH"
-
 export GOPATH="$HOME/Workspace/go"
 export PATH="$GOPATH/bin:$PATH"
 if [[ "${OS}" == 'Darwin' ]]; then
@@ -17,8 +15,6 @@ fi
 if [[ "${OS}" == 'Darwin' ]]; then
   export PATH="$HOME/Applications/Docker.app/Contents/Resources/bin:$PATH"
 fi
-
-export PATH="$HOME/.cargo/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
