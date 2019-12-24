@@ -29,6 +29,8 @@ fi
 export EDITOR=vim
 export GRAPHVIZ_DOT="$(which dot)"
 
+alias gcloud="docker run --rm -it --volume ${HOME}/.config/gcloud:/gcloud-config -e CLOUDSDK_CONFIG=/gcloud-config google/cloud-sdk gcloud"
+
 alias groot='cd $(git rev-parse --show-toplevel)'
 unalias gb
 
