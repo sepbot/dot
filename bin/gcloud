@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker run --rm -it \
+    --volume ${HOME}/.config/gcloud:/gcloud-config \
+    -e CLOUDSDK_CONFIG=/gcloud-config \
+    google/cloud-sdk gcloud "${@:1}"
+
