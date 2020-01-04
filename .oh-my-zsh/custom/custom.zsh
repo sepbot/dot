@@ -12,10 +12,6 @@ if [[ "${OS}" == 'Darwin' ]]; then
   export PATH="$HOME/.brew/opt/go/libexec/bin:$PATH"
 fi
 
-if [[ "${OS}" == 'Darwin' ]]; then
-  export PATH="$HOME/Applications/Docker.app/Contents/Resources/bin:$PATH"
-fi
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
@@ -23,7 +19,6 @@ export NVM_DIR="$HOME/.nvm"
 if [[ "${OS}" == 'Darwin' ]]; then
   export ANDROID_HOME="$HOME/Library/Android/sdk"
   export PATH="$ANDROID_HOME/platform-tools:$PATH"
-  export PATH="$PATH:$HOME/Applications/flutter/bin"
 fi
 
 export EDITOR=vim
