@@ -12,10 +12,6 @@ if [[ "${OS}" == 'Darwin' ]]; then
   export PATH="$HOME/.brew/opt/go/libexec/bin:$PATH"
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
 if [[ "${OS}" == 'Darwin' ]]; then
   export ANDROID_HOME="$HOME/Library/Android/sdk"
   export PATH="$ANDROID_HOME/platform-tools:$PATH"
