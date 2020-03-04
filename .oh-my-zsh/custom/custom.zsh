@@ -6,8 +6,10 @@ if [[ "${OS}" == 'Darwin' ]]; then
   export PATH="$HOME/.brew/bin:/usr/local/bin:$PATH"
 fi
 
-export PATH="HOME/.cargo/bin:$PATH"
-source "$HOME/.cargo/env"
+if [[ -d "$HOME/.cargo" ]]; then
+  export PATH="HOME/.cargo/bin:$PATH"
+  source "$HOME/.cargo/env"
+fi
 
 export GOPATH="$HOME/Workspace/go"
 export PATH="$GOPATH/bin:$PATH"
