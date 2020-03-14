@@ -1,3 +1,4 @@
+ZSH_DOTENV_PROMPT=false
 OS="$(uname)"
 
 export PATH="$HOME/bin:$PATH"
