@@ -1,6 +1,10 @@
 ZSH_DOTENV_PROMPT=false
 OS="$(uname)"
 
+if [[ "${OS}" != 'Darwin'  ]];then
+  umask 0077
+fi
+
 export PATH="$HOME/bin:$PATH"
 
 if [[ "${OS}" == 'Darwin' ]]; then
