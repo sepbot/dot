@@ -20,6 +20,10 @@ if [[ -d "$HOME/.cargo" ]]; then
   source "$HOME/.cargo/env"
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 export GOPATH="$HOME/Workspace/go"
 export PATH="$GOPATH/bin:$PATH"
 if [[ "${OS}" == 'Darwin' ]]; then
