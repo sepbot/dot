@@ -1,4 +1,3 @@
-ZSH_DOTENV_PROMPT=false
 OS="$(uname)"
 
 if [[ "${OS}" != 'Darwin'  ]];then

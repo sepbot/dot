@@ -2,6 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export DISABLE_UPDATE_PROMPT="true"
+export ZSH_DOTENV_PROMPT="false"
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
