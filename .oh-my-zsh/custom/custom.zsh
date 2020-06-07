@@ -34,8 +34,15 @@ if [[ "${OS}" == 'Darwin' ]]; then
   export PATH="$ANDROID_HOME/platform-tools:$PATH"
 fi
 
+export PIPENV_VENV_IN_PROJECT=1
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
 export EDITOR=vim
 export GRAPHVIZ_DOT="$(which dot)"
 
 alias groot='cd $(git rev-parse --show-toplevel)'
 unalias gb
+
+eval "$(pyenv init -)"
+
