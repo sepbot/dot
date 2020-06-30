@@ -4,7 +4,7 @@ if [[ "${OS}" != 'Darwin'  ]];then
   umask 0077
 fi
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 if [[ "${OS}" == 'Darwin' ]]; then
   export PATH="$HOME/.brew/bin:/usr/local/bin:$PATH"
