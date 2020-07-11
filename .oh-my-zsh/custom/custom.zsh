@@ -46,3 +46,7 @@ unalias gb
 
 eval "$(pyenv init -)"
 
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C "$HOME/bin/nomad" nomad
+
+
