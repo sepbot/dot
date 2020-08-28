@@ -45,6 +45,7 @@ alias groot='cd $(git rev-parse --show-toplevel)'
 unalias gb
 
 eval "$(pyenv init -)"
+eval "$(direnv hook zsh)"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C "$HOME/bin/nomad" nomad
