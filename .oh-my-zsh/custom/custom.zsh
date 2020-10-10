@@ -50,4 +50,10 @@ eval "$(direnv hook zsh)"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C "$HOME/bin/nomad" nomad
 
+case "$(uname -a)" in
+  *microsoft*)
+    export DISPLAY="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0"
+    ;;
+esac
+
 
