@@ -53,6 +53,7 @@ complete -o nospace -C "$HOME/bin/nomad" nomad
 case "$(uname -a)" in
   *microsoft*)
     export DISPLAY="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0"
+    export PULSE_SERVER=tcp:$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}')
     ;;
 esac
 
