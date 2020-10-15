@@ -54,6 +54,7 @@ alias ide='nohup idea . > /dev/null 2>&1 &'
 
 case "$(uname -a)" in
   *microsoft*)
+    alias cls='tput clear'
     export LOCALHOST="$(ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)"
     export HOST_MACHINE="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}')"
     export DISPLAY="${HOST_MACHINE}:0.0"
