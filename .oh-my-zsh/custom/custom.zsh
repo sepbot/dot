@@ -50,10 +50,14 @@ eval "$(direnv hook zsh)"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C "$HOME/bin/nomad" nomad
 
+alias ide='nohup idea . > /dev/null 2>&1 &'
+
 case "$(uname -a)" in
   *microsoft*)
-    export DISPLAY="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0"
-    export PULSE_SERVER=tcp:$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}')
+    export LOCALHOST="$(ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)"
+    export HOST_MACHINE="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}')"
+    export DISPLAY="${HOST_MACHINE}:0.0"
+    export PULSE_SERVER="tcp:${HOST_MACHINE}"
     ;;
 esac
 
