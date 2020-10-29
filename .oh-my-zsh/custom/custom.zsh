@@ -1,14 +1,6 @@
-OS="$(uname)"
-
-if [[ "${OS}" != 'Darwin'  ]];then
-  umask 0077
-fi
+umask 0077
 
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-
-if [[ "${OS}" == 'Darwin' ]]; then
-  export PATH="$HOME/.brew/bin:/usr/local/bin:$PATH"
-fi
 
 if [[ -d "$HOME/.nsc/bin" ]]; then
   export PATH="$HOME/.nsc/bin:$PATH"
@@ -25,14 +17,6 @@ export NVM_DIR="$HOME/.nvm"
 
 export GOPATH="$HOME/gopath"
 export PATH="$GOPATH/bin:$PATH"
-if [[ "${OS}" == 'Darwin' ]]; then
-  export PATH="$HOME/.brew/opt/go/libexec/bin:$PATH"
-fi
-
-if [[ "${OS}" == 'Darwin' ]]; then
-  export ANDROID_HOME="$HOME/Library/Android/sdk"
-  export PATH="$ANDROID_HOME/platform-tools:$PATH"
-fi
 
 export PIPENV_VENV_IN_PROJECT=1
 export PYENV_ROOT="$HOME/.pyenv"
@@ -59,6 +43,10 @@ case "$(uname -a)" in
     export HOST_MACHINE="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}')"
     export DISPLAY="${HOST_MACHINE}:0.0"
     export PULSE_SERVER="tcp:${HOST_MACHINE}"
+
+    /usr/bin/keychain --quiet --nogui $HOME/.ssh/id_rsa
+    source $HOME/.keychain/$(hostname)-sh
+    ssh-add $HOME/.ssh/id_rsa 2>/dev/null
     ;;
 esac
 
