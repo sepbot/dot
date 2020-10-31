@@ -25,6 +25,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export EDITOR=vim
 export GRAPHVIZ_DOT="$(which dot)"
 
+alias grep="grep '--exclude-dir=*node_modules*' '--exclude-dir=*.venv*' '--exclude-dir=*.cache*' '--exclude-dir=*.parcel-cache*' '--exclude-dir=*dist*'"
+
 alias groot='cd $(git rev-parse --show-toplevel)'
 unalias gb
 
