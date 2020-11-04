@@ -36,7 +36,7 @@ eval "$(direnv hook zsh)"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C "$HOME/bin/nomad" nomad
 
-alias ide='nohup idea . > /dev/null 2>&1 &'
+alias ide='nohup idea . > /dev/null 2>&1 &; disown'
 
 case "$(uname -a)" in
   *microsoft*)
@@ -45,6 +45,8 @@ case "$(uname -a)" in
     export HOST_MACHINE="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}')"
     export DISPLAY="${HOST_MACHINE}:0.0"
     export PULSE_SERVER="tcp:${HOST_MACHINE}"
+
+    alias aseprite='/mnt/c/Program\ Files/Aseprite/Aseprite.exe'
 
     /usr/bin/keychain --quiet --nogui $HOME/.ssh/id_rsa
     source $HOME/.keychain/$(hostname)-sh
