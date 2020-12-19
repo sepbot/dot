@@ -55,3 +55,7 @@ case "$(uname -a)" in
 esac
 
 
+if command -v kubectl &> /dev/null; then
+  source <(kubectl completion zsh)
+fi
+
