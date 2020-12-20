@@ -59,3 +59,6 @@ if command -v kubectl &> /dev/null; then
   source <(kubectl completion zsh)
 fi
 
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+
