@@ -62,3 +62,10 @@ fi
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
+
+if [ -d "$HOME/google-cloud-sdk" ]; then
+  export CLOUDSDK_PYTHON="/usr/bin/python"
+  . "$HOME/google-cloud-sdk/path.zsh.inc"
+  . "$HOME/google-cloud-sdk/completion.zsh.inc"
+fi
+
