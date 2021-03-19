@@ -43,8 +43,16 @@ case "$(uname -a)" in
     alias cls='tput clear'
     export LOCALHOST="$(ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)"
     export HOST_MACHINE="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}')"
-    export DISPLAY="${HOST_MACHINE}:0.0"
     export PULSE_SERVER="tcp:${HOST_MACHINE}"
+
+    export DISPLAY=":0"
+   if ! pgrep wsld >> /dev/null 2>&1 ; then
+     nohup wsld > /dev/null < /dev/null 2>&1 &
+     disown
+       while ! xset q > /dev/null 2>&1 ; do
+         sleep 0.3
+       done
+   fi
 
     alias aseprite='/mnt/c/Program\ Files/Aseprite/Aseprite.exe'
 
