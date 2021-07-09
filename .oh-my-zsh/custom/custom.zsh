@@ -54,12 +54,13 @@ case "$(uname -a)" in
        done
    fi
 
-    alias aseprite='/mnt/c/Program\ Files/Aseprite/Aseprite.exe'
+     [[ -d "/opt/mssql-tools/bin" ]] && export PATH="/opt/mssql-tools/bin:${PATH}"
+     alias aseprite='/mnt/c/Program\ Files/Aseprite/Aseprite.exe'
 
-    /usr/bin/keychain --quiet --nogui $HOME/.ssh/id_rsa
-    source $HOME/.keychain/$(hostname)-sh
-    ssh-add $HOME/.ssh/id_rsa 2>/dev/null
-    ;;
+     /usr/bin/keychain --quiet --nogui $HOME/.ssh/id_rsa
+     source $HOME/.keychain/$(hostname)-sh
+     ssh-add $HOME/.ssh/id_rsa 2>/dev/null
+     ;;
 esac
 
 
