@@ -25,6 +25,6 @@ alias grep="grep '--exclude-dir=*node_modules*' '--exclude-dir=*.venv*' '--exclu
 alias groot='cd $(git rev-parse --show-toplevel)'
 unalias gb
 
-eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
 eval "$(direnv hook zsh)"
 
