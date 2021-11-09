@@ -8,3 +8,15 @@ use_nvm() {
   fi
 }
 
+use_aws_session() {
+  local role_arn=$1
+  local aws_profile=$2
+
+  local token_code=`oathtool -b --totp $AWS_MFA_SECRET`
+  local creds=`aws sts get-session-token --serial-number $role_arn --token-code $token_code --duration-seconds 43200 --profile $aws_profile`
+
+  export AWS_ACCESS_KEY_ID=`echo $creds | jq -r .Credentials.AccessKeyId`
+  export AWS_SECRET_ACCESS_KEY=`echo $creds | jq -r .Credentials.SecretAccessKey`
+  export AWS_SESSION_TOKEN=`echo $creds | jq -r .Credentials.SessionToken`
+}
+
