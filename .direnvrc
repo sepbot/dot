@@ -18,5 +18,7 @@ use_aws_session() {
   export AWS_ACCESS_KEY_ID=`echo $creds | jq -r .Credentials.AccessKeyId`
   export AWS_SECRET_ACCESS_KEY=`echo $creds | jq -r .Credentials.SecretAccessKey`
   export AWS_SESSION_TOKEN=`echo $creds | jq -r .Credentials.SessionToken`
+
+  echo "aws session expires @ $(date -d $(echo $creds | jq -r .Credentials.Expiration))"
 }
 
