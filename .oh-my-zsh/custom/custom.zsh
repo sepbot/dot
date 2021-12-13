@@ -22,13 +22,15 @@ export RUSTUP_HOME="$HOME/.cache/rustup"
   export GOPATH="$HOME/.cache/go" && \
   export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
 
-[ -s "$HOME/.local/pyenv/bin" ] && \
-  export PATH="$HOME/.local/pyenv/bin:$PATH" && \
+export PYENV_ROOT="$HOME/.local/pyenv"
+[ -s "$PYENV_ROOT/bin" ] && \
+  export PATH="$PYENV_ROOT/bin:$PATH" && \
   eval "$(pyenv init --path)"
 
 (( $+commands[dot] )) && export GRAPHVIZ_DOT="$(which dot)"
 (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
 
+alias l='ls -lah --group-directories-first'
 alias groot='cd $(git rev-parse --show-toplevel)'
 
 alias grep="grep"\
