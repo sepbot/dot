@@ -1,30 +1,40 @@
 umask 0077
 
 export EDITOR=vim
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
-case "$(uname -a)" in
-  *Darwin*)
-    alias cls='clear && reset'
-    export PATH="$HOME/.brew/bin:$PATH"
-    ;;
-esac
+[ $(uname -s) = "Darwin" ] && \
+  export PATH="$HOME/.brew/bin:$PATH"
 
-if [[ -d "$HOME/.cargo" ]]; then
-  export PATH="$HOME/.cargo/bin:$PATH"
-  source "$HOME/.cargo/env"
-fi
+export CARGO_HOME="$HOME/.local/cargo"
+export RUSTUP_HOME="$HOME/.cache/rustup"
+[ -d "$CARGO_HOME" ] && \
+  export PATH="$CARGO_HOME/bin:$PATH" && \
+  source "$CARGO_HOME/env"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+[ -d "$HOME/.local/nvm" ] && \
+  export NVM_DIR="$HOME/.local/nvm" && \
+  source "$NVM_DIR/nvm.sh" && \
+  source "$NVM_DIR/bash_completion"
 
-(( $+commands[go] )) && export GOPATH="$HOME/.local/gopath" && export PATH="$GOPATH/bin:$PATH"
+[ -d "$HOME/.local/go" ] && \
+  export GOROOT="$HOME/.local/go" && \
+  export GOPATH="$HOME/.cache/go" && \
+  export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
+
+[ -s "$HOME/.local/pyenv/bin" ] && \
+  export PATH="$HOME/.local/pyenv/bin:$PATH" && \
+  eval "$(pyenv init --path)"
+
 (( $+commands[dot] )) && export GRAPHVIZ_DOT="$(which dot)"
 (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
 
-alias grep="grep '--exclude-dir=*node_modules*' '--exclude-dir=*.venv*' '--exclude-dir=*.cache*' '--exclude-dir=*.parcel-cache*' '--exclude-dir=*dist*'"
 alias groot='cd $(git rev-parse --show-toplevel)'
 
-[ -s "$HOME/.pyenv/bin" ] && export PATH="$HOME/.pyenv/bin:$PATH" && eval "$(pyenv init --path)"
+alias grep="grep"\
+" '--exclude-dir=*node_modules*'"\
+" '--exclude-dir=*.venv*'"\
+" '--exclude-dir=*.cache*'"\
+" '--exclude-dir=*.parcel-cache*'"\
+" '--exclude-dir=*dist*'"
 
