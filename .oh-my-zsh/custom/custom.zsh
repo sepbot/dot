@@ -1,5 +1,10 @@
 umask 0077
 
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
 export EDITOR=vim
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -12,6 +17,7 @@ export RUSTUP_HOME="$HOME/.cache/rustup"
   export PATH="$CARGO_HOME/bin:$PATH" && \
   source "$CARGO_HOME/env"
 
+export npm_config_cache="$HOME/.cache/npm"
 [ -d "$HOME/.local/nvm" ] && \
   export NVM_DIR="$HOME/.local/nvm" && \
   source "$NVM_DIR/nvm.sh" && \
@@ -29,6 +35,9 @@ export PYENV_ROOT="$HOME/.local/pyenv"
 
 (( $+commands[dot] )) && export GRAPHVIZ_DOT="$(which dot)"
 (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
+
+export YARN_CACHE_FOLDER="$HOME/.cache/yarn"
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 alias l='ls -lah --group-directories-first'
 alias groot='cd $(git rev-parse --show-toplevel)'

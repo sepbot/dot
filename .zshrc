@@ -3,6 +3,7 @@
 
 export DISABLE_UPDATE_PROMPT="true"
 export ZSH_DOTENV_PROMPT="false"
+export HISTFILE="$HOME/.cache/zsh_history"
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
