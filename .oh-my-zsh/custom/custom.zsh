@@ -33,6 +33,11 @@ export PYENV_ROOT="$HOME/.local/pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH" && \
   eval "$(pyenv init --path)"
 
+[ -s "$HOME/.local/aws" ] && \
+  export PATH="$HOME/.local/aws/bin:$PATH" && \
+  export AWS_CONFIG_FILE="$HOME/.local/aws/config" && \
+  export AWS_SHARED_CREDENTIALS_FILE="$HOME/.local/aws/credentials"
+
 (( $+commands[dot] )) && export GRAPHVIZ_DOT="$(which dot)"
 (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
 
