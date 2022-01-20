@@ -9,7 +9,11 @@ export EDITOR=vim
 export PATH="$HOME/.local/bin:$PATH"
 
 [ $(uname -s) = "Darwin" ] && \
-  export PATH="$HOME/.brew/bin:$PATH"
+  export PATH="$HOME/.brew/bin:$PATH" && \
+  export CPPFLAGS="-I$HOME/.brew/opt/openssl@1.1/include" && \
+  export LDFLAGS="-L$HOME/.brew/opt/openssl@1.1/lib" && \
+  alias ls='gls --color' && \
+  alias date='gdate'
 
 export CARGO_HOME="$HOME/.local/cargo"
 export RUSTUP_HOME="$HOME/.cache/rustup"
@@ -34,7 +38,7 @@ export PYENV_ROOT="$HOME/.local/pyenv"
   eval "$(pyenv init --path)"
 
 [ -s "$HOME/.local/aws" ] && \
-  export PATH="$HOME/.local/aws/bin:$PATH" && \
+  export PATH="$PATH:$HOME/.local/aws/bin" && \
   export AWS_CONFIG_FILE="$HOME/.local/aws/config" && \
   export AWS_SHARED_CREDENTIALS_FILE="$HOME/.local/aws/credentials"
 
