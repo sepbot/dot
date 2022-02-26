@@ -12,6 +12,7 @@ use_aws_session() {
   local aws_profile=$2
 
   local creds_file="$(pwd)/.aws-creds"
+  local env_file="$(pwd)/.aws-env"
   local creds=""
   
   local now=$(date +%s)
@@ -27,6 +28,9 @@ use_aws_session() {
     local token_code=`oathtool -b --totp $AWS_MFA_SECRET`
     creds=`aws sts get-session-token --serial-number $role_arn --token-code $token_code --duration-seconds 129600 --profile $aws_profile`
     echo $creds > $creds_file
+    echo AWS_ACCESS_KEY_ID=`echo $creds | jq -r .Credentials.AccessKeyId` > $env_file
+    echo AWS_SECRET_ACCESS_KEY=`echo $creds | jq -r .Credentials.SecretAccessKey` >> $env_file
+    echo AWS_SESSION_TOKEN=`echo $creds | jq -r .Credentials.SessionToken` >> $env_file
   fi
 
   export AWS_ACCESS_KEY_ID=`echo $creds | jq -r .Credentials.AccessKeyId`
