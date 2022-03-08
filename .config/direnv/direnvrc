@@ -6,6 +6,14 @@ use_nvm() {
   nvm use $node_version
 }
 
+cmd_date() {
+  if hash gdate 2>/dev/null; then
+    gdate "$@"
+  else
+    date "$@"
+  fi
+}
+
 use_aws_session() {
   set -e
   local role_arn=$1
@@ -15,12 +23,12 @@ use_aws_session() {
   local env_file="$(pwd)/.aws-env"
   local creds=""
   
-  local now=$(date +%s)
+  local now=$(cmd_date +%s)
   local expires="0"
 
   if [ -f $creds_file ]; then
     creds=`cat $creds_file`
-    expires=$(date -d $(echo $creds | jq -r .Credentials.Expiration) +%s)
+    expires=$(cmd_date -d $(echo $creds | jq -r .Credentials.Expiration) +%s)
   fi
 
   if [ $now -gt $expires ]; then
@@ -37,6 +45,6 @@ use_aws_session() {
   export AWS_SECRET_ACCESS_KEY=`echo $creds | jq -r .Credentials.SecretAccessKey`
   export AWS_SESSION_TOKEN=`echo $creds | jq -r .Credentials.SessionToken`
 
-  echo "aws session expires @ $(date -d $(echo $creds | jq -r .Credentials.Expiration))"
+  echo "aws session expires @ $(cmd_date -d $(echo $creds | jq -r .Credentials.Expiration))"
 }
 
