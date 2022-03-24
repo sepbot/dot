@@ -9,7 +9,7 @@ export EDITOR=vim
 export PATH="$HOME/.local/bin:$PATH"
 
 [ $(uname -s) = "Darwin" ] && \
-  export PATH="$HOME/.local/brew/bin:$PATH" && \
+  export PATH="$HOME/.local/brew/bin:$HOME/.local/brew/sbin:$PATH" && \
   alias ls='gls --color' && \
   alias date='gdate'
 

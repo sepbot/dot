@@ -33,7 +33,7 @@ use_aws_session() {
 
   if [ $now -gt $expires ]; then
     echo "creating new aws session"
-    local token_code=`oathtool -b --totp $AWS_MFA_SECRET`
+    local token_code=`mintotp <<< $AWS_MFA_SECRET`
     creds=`aws sts get-session-token --serial-number $role_arn --token-code $token_code --duration-seconds 129600 --profile $aws_profile`
     echo $creds > $creds_file
     echo AWS_ACCESS_KEY_ID=`echo $creds | jq -r .Credentials.AccessKeyId` > $env_file
