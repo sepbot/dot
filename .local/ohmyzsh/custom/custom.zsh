@@ -10,6 +10,8 @@ export PATH="$HOME/.local/bin:$PATH"
 
 [ $(uname -s) = "Darwin" ] && \
   export PATH="$HOME/.local/brew/bin:$HOME/.local/brew/sbin:$PATH" && \
+  export PATH="$PATH:$HOME/.local/brew_x86/bin:$HOME/.local/brew_86/sbin" && \
+  alias brow="arch -x86_64 $HOME/.local/brew_x86/bin/brew" && \
   alias ls='gls --color' && \
   alias date='gdate'
 
