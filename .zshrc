@@ -7,7 +7,7 @@ ZSH_THEME="custom"
 CASE_SENSITIVE="true"
 FPATH=$HOME/.brew/share/zsh/site-functions:$FPATH
 
-plugins=(git npm zsh-autosuggestions)
+plugins=(git zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 umask 0077
@@ -38,6 +38,7 @@ export RUSTUP_HOME="$HOME/.cache/rustup"
   source "$CARGO_HOME/env"
 
 export npm_config_cache="$HOME/.cache/npm"
+export N_PREFIX="$HOME/.sdk/node"
 [ -d "$HOME/.local/nvm" ] && \
   export NVM_DIR="$HOME/.local/nvm" && \
   source "$NVM_DIR/nvm.sh" && \
