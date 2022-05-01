@@ -22,7 +22,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 [ $(uname -s) = "Darwin" ] && \
   export PATH="$HOME/.local/brew/bin:$HOME/.local/brew/sbin:$PATH" && \
-  export PATH="$PATH:$HOME/.local/brew_x86/bin:$HOME/.local/brew_86/sbin" && \
+  export PATH="$PATH:$HOME/.local/brew_x86/bin:$HOME/.local/brew_x86/sbin" && \
   alias brow="arch -x86_64 $HOME/.local/brew_x86/bin/brew" && \
   alias ls='gls --color' && \
   alias date='gdate'
@@ -43,16 +43,6 @@ export npm_config_cache="$HOME/.cache/npm"
   source "$NVM_DIR/nvm.sh" && \
   source "$NVM_DIR/bash_completion"
 
-[ -d "$HOME/.local/go" ] && \
-  export GOROOT="$HOME/.local/go" && \
-  export GOPATH="$HOME/.cache/go" && \
-  export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
-
-export PYENV_ROOT="$HOME/.local/pyenv"
-[ -s "$PYENV_ROOT/bin" ] && \
-  export PATH="$PYENV_ROOT/bin:$PATH" && \
-  eval "$(pyenv init --path)"
-
 [ -s "$HOME/.local/aws" ] && \
   export PATH="$PATH:$HOME/.local/aws/bin" && \
   export AWS_CONFIG_FILE="$HOME/.local/aws/config" && \
@@ -60,6 +50,8 @@ export PYENV_ROOT="$HOME/.local/pyenv"
 
 (( $+commands[dot] )) && export GRAPHVIZ_DOT="$(which dot)"
 (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
+(( $+commands[pyenv] )) && eval "$(pyenv init --path)"
+(( $+commands[go] )) && export GOROOT="$HOME/.local/go" && export GOPATH="$HOME/.cache/go"
 
 export YARN_CACHE_FOLDER="$HOME/.cache/yarn"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
@@ -71,6 +63,5 @@ alias grep="grep"\
 " '--exclude-dir=*node_modules*'"\
 " '--exclude-dir=*.venv*'"\
 " '--exclude-dir=*.cache*'"\
-" '--exclude-dir=*.parcel-cache*'"\
 " '--exclude-dir=*dist*'"
 
