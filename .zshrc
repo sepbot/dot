@@ -1,99 +1,76 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 export DISABLE_UPDATE_PROMPT="true"
 export ZSH_DOTENV_PROMPT="false"
 export HISTFILE="$HOME/.cache/zsh_history"
-
-# Path to your oh-my-zsh installation.
 export ZSH=~/.local/ohmyzsh
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="custom"
-
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
-
 FPATH=$HOME/.brew/share/zsh/site-functions:$FPATH
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(git npm zsh-autosuggestions)
-
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+umask 0077
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export EDITOR=vim
+export PATH="$HOME/.local/bin:$PATH"
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+[ $(uname -s) = "Darwin" ] && \
+  export PATH="$HOME/.local/brew/bin:$HOME/.local/brew/sbin:$PATH" && \
+  export PATH="$PATH:$HOME/.local/brew_x86/bin:$HOME/.local/brew_86/sbin" && \
+  alias brow="arch -x86_64 $HOME/.local/brew_x86/bin/brew" && \
+  alias ls='gls --color' && \
+  alias date='gdate'
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export SDKMAN_DIR="$HOME/.local/sdkman"
+[ -d "$SDKMAN_DIR" ] && \
+  source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export CARGO_HOME="$HOME/.local/cargo"
+export RUSTUP_HOME="$HOME/.cache/rustup"
+[ -d "$CARGO_HOME" ] && \
+  export PATH="$CARGO_HOME/bin:$PATH" && \
+  source "$CARGO_HOME/env"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+export npm_config_cache="$HOME/.cache/npm"
+[ -d "$HOME/.local/nvm" ] && \
+  export NVM_DIR="$HOME/.local/nvm" && \
+  source "$NVM_DIR/nvm.sh" && \
+  source "$NVM_DIR/bash_completion"
+
+[ -d "$HOME/.local/go" ] && \
+  export GOROOT="$HOME/.local/go" && \
+  export GOPATH="$HOME/.cache/go" && \
+  export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
+
+export PYENV_ROOT="$HOME/.local/pyenv"
+[ -s "$PYENV_ROOT/bin" ] && \
+  export PATH="$PYENV_ROOT/bin:$PATH" && \
+  eval "$(pyenv init --path)"
+
+[ -s "$HOME/.local/aws" ] && \
+  export PATH="$PATH:$HOME/.local/aws/bin" && \
+  export AWS_CONFIG_FILE="$HOME/.local/aws/config" && \
+  export AWS_SHARED_CREDENTIALS_FILE="$HOME/.local/aws/credentials"
+
+(( $+commands[dot] )) && export GRAPHVIZ_DOT="$(which dot)"
+(( $+commands[direnv] )) && eval "$(direnv hook zsh)"
+
+export YARN_CACHE_FOLDER="$HOME/.cache/yarn"
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+
+alias l='ls -lah --group-directories-first'
+alias groot='cd $(git rev-parse --show-toplevel)'
+
+alias grep="grep"\
+" '--exclude-dir=*node_modules*'"\
+" '--exclude-dir=*.venv*'"\
+" '--exclude-dir=*.cache*'"\
+" '--exclude-dir=*.parcel-cache*'"\
+" '--exclude-dir=*dist*'"
 
