@@ -1,9 +1,11 @@
-use_nvm() {
-  set -e
-  local node_version=$1
-  
-  source $NVM_DIR/nvm.sh
-  nvm use $node_version
+use_node() {
+  local node_path="$HOME/.sdk/node/$1/bin"
+
+  if [ -d $node_path ]; then
+    export PATH="$node_path:$PATH"
+  else
+    echo "did not find node sdk at path $node_path"
+  fi
 }
 
 cmd_date() {

@@ -37,23 +37,15 @@ export RUSTUP_HOME="$HOME/.cache/rustup"
   export PATH="$CARGO_HOME/bin:$PATH" && \
   source "$CARGO_HOME/env"
 
-export npm_config_cache="$HOME/.cache/npm"
-export N_PREFIX="$HOME/.sdk/node"
-[ -d "$HOME/.local/nvm" ] && \
-  export NVM_DIR="$HOME/.local/nvm" && \
-  source "$NVM_DIR/nvm.sh" && \
-  source "$NVM_DIR/bash_completion"
-
-[ -s "$HOME/.local/aws" ] && \
-  export PATH="$PATH:$HOME/.local/aws/bin" && \
-  export AWS_CONFIG_FILE="$HOME/.local/aws/config" && \
-  export AWS_SHARED_CREDENTIALS_FILE="$HOME/.local/aws/credentials"
-
 (( $+commands[dot] )) && export GRAPHVIZ_DOT="$(which dot)"
 (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
 (( $+commands[pyenv] )) && eval "$(pyenv init --path)"
 (( $+commands[go] )) && export GOROOT="$HOME/.local/go" && export GOPATH="$HOME/.cache/go"
+(( $+commands[aws] )) && \
+  export AWS_CONFIG_FILE="$HOME/.local/aws/config" && \
+  export AWS_SHARED_CREDENTIALS_FILE="$HOME/.local/aws/credentials"
 
+export npm_config_cache="$HOME/.cache/npm"
 export YARN_CACHE_FOLDER="$HOME/.cache/yarn"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
