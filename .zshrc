@@ -27,10 +27,6 @@ export PATH="$HOME/.local/bin:$PATH"
   alias ls='gls --color' && \
   alias date='gdate'
 
-export SDKMAN_DIR="$HOME/.local/sdkman"
-[ -d "$SDKMAN_DIR" ] && \
-  source "$SDKMAN_DIR/bin/sdkman-init.sh"
-
 export CARGO_HOME="$HOME/.local/cargo"
 export RUSTUP_HOME="$HOME/.cache/rustup"
 [ -d "$CARGO_HOME" ] && \
