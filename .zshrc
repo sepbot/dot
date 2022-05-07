@@ -29,6 +29,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 [[ $(uname -r) =~ "WSL2"  ]] && \
   export DISPLAY="vsock/:0" && \
+  alias docker=podman && \
   alias idea="$HOME/Applications/idea/bin/idea.sh > /dev/null 2>&1 &; disown"
 
 [ -d "/home/linuxbrew/.linuxbrew" ] && \
