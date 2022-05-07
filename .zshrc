@@ -27,6 +27,10 @@ export PATH="$HOME/.local/bin:$PATH"
   alias ls='gls --color' && \
   alias date='gdate'
 
+[[ $(uname -r) =~ "WSL2"  ]] && \
+  export DISPLAY="vsock/:0" && \
+  alias idea="$HOME/Applications/idea/bin/idea.sh > /dev/null 2>&1 &; disown"
+
 [ -d "/home/linuxbrew/.linuxbrew" ] && \
   export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
 
