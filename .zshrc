@@ -27,6 +27,9 @@ export PATH="$HOME/.local/bin:$PATH"
   alias ls='gls --color' && \
   alias date='gdate'
 
+[ -d "/home/linuxbrew/.linuxbrew" ] && \
+  export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+
 export CARGO_HOME="$HOME/.local/cargo"
 export RUSTUP_HOME="$HOME/.cache/rustup"
 [ -d "$CARGO_HOME" ] && \
