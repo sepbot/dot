@@ -44,7 +44,11 @@ export RUSTUP_HOME="$HOME/.cache/rustup"
 (( $+commands[dot] )) && export GRAPHVIZ_DOT="$(which dot)"
 (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
 (( $+commands[pyenv] )) && eval "$(pyenv init --path)"
-(( $+commands[go] )) && export GOROOT="$HOME/.local/go" && export GOPATH="$HOME/.cache/go"
+
+(( $+commands[go] )) && \
+  export GOROOT=$(dirname $(dirname $(realpath $(which go)))) && \
+  export GOPATH="$HOME/.cache/go"
+
 (( $+commands[aws] )) && \
   export AWS_CONFIG_FILE="$HOME/.local/aws/config" && \
   export AWS_SHARED_CREDENTIALS_FILE="$HOME/.local/aws/credentials"
