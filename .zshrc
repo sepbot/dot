@@ -8,7 +8,6 @@ CASE_SENSITIVE="true"
 FPATH=$HOME/.brew/share/zsh/site-functions:$FPATH
 
 plugins=(git zsh-autosuggestions)
-source $ZSH/oh-my-zsh.sh
 
 umask 0077
 
@@ -65,4 +64,6 @@ alias grep="grep"\
 " '--exclude-dir=*.venv*'"\
 " '--exclude-dir=*.cache*'"\
 " '--exclude-dir=*dist*'"
+
+source $ZSH/oh-my-zsh.sh
 
