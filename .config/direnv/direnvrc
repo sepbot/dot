@@ -1,5 +1,5 @@
 use_node() {
-  local node_path="$HOME/.sdk/node/$1/bin"
+  local node_path="$HOME/.local/node/$1/bin"
 
   if [ -d $node_path ]; then
     export PATH="$node_path:$PATH"
