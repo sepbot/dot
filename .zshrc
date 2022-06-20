@@ -53,6 +53,9 @@ export RUSTUP_HOME="$HOME/.cache/rustup"
   export AWS_CONFIG_FILE="$HOME/.local/aws/config" && \
   export AWS_SHARED_CREDENTIALS_FILE="$HOME/.local/aws/credentials"
 
+(( $+commands[brew] )) && (( $+commands[pyenv] )) && \
+  alias pyenv='CPPFLAGS="-I$(brew --prefix openssl)/include" LDFLAGS="-L$(brew --prefix openssl)/lib" pyenv'
+
 export npm_config_cache="$HOME/.cache/npm"
 export YARN_CACHE_FOLDER="$HOME/.cache/yarn"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
