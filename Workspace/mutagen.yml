@@ -1,0 +1,19 @@
+sync:
+  defaults:
+    ignore:
+      paths:
+        - "/mutagen.yml.lock"
+        - ".idea"
+        - ".terraform"
+        - ".venv"
+        - "__pycache__"
+        - "build"
+        - "dist"
+        - "node_modules"
+        - "*.iml"
+        - "*.swp"
+        - ".DS_Store"
+  workspace:
+    alpha: ~/Workspace
+    beta: pi:~/Workspace
+

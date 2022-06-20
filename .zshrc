@@ -50,8 +50,8 @@ export RUSTUP_HOME="$HOME/.cache/rustup"
   export GOPATH="$HOME/.cache/go"
 
 (( $+commands[aws] )) && \
-  export AWS_CONFIG_FILE="$HOME/.local/aws/config" && \
-  export AWS_SHARED_CREDENTIALS_FILE="$HOME/.local/aws/credentials"
+  export AWS_CONFIG_FILE="$HOME/Workspace/.aws/config" && \
+  export AWS_SHARED_CREDENTIALS_FILE="$HOME/Workspace/.aws/credentials"
 
 (( $+commands[brew] )) && (( $+commands[pyenv] )) && \
   alias pyenv='CPPFLAGS="-I$(brew --prefix openssl)/include" LDFLAGS="-L$(brew --prefix openssl)/lib" pyenv'
