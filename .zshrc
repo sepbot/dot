@@ -5,7 +5,9 @@ export ZSH=~/.local/ohmyzsh
 
 ZSH_THEME="custom"
 CASE_SENSITIVE="true"
-FPATH=$HOME/.brew/share/zsh/site-functions:$FPATH
+
+[ -d "$HOME/.brew/share/zsh/site-functions" ] && \
+  export FPATH=$HOME/.brew/share/zsh/site-functions:$FPATH
 
 plugins=(git zsh-autosuggestions)
 
@@ -25,15 +27,6 @@ export PATH="$HOME/.local/bin:$PATH"
   alias brow="arch -x86_64 $HOME/.local/brew_x86/bin/brew" && \
   alias ls='gls --color' && \
   alias date='gdate'
-
-[[ $(uname -r) =~ "WSL2"  ]] && \
-  export DISPLAY="vsock/:0" && \
-  ulimit -n 65536 && \
-  alias docker=podman && \
-  alias idea="$HOME/Applications/idea/bin/idea.sh > /dev/null 2>&1 &; disown"
-
-[ -d "/home/linuxbrew/.linuxbrew" ] && \
-  export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
 
 export CARGO_HOME="$HOME/.local/cargo"
 export RUSTUP_HOME="$HOME/.cache/rustup"
@@ -56,21 +49,14 @@ export RUSTUP_HOME="$HOME/.cache/rustup"
   export AWS_CONFIG_FILE="$HOME/Workspace/.aws/config" && \
   export AWS_SHARED_CREDENTIALS_FILE="$HOME/Workspace/.aws/credentials"
 
-(( $+commands[brew] )) && (( $+commands[pyenv] )) && \
-  alias pyenv='CPPFLAGS="-I$(brew --prefix openssl)/include" LDFLAGS="-L$(brew --prefix openssl)/lib" pyenv'
-
 export npm_config_cache="$HOME/.cache/npm"
 export YARN_CACHE_FOLDER="$HOME/.cache/yarn"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
-alias l='ls -lah --group-directories-first'
-alias groot='cd $(git rev-parse --show-toplevel)'
-
-alias grep="grep"\
-" '--exclude-dir=*node_modules*'"\
-" '--exclude-dir=*.venv*'"\
-" '--exclude-dir=*.cache*'"\
-" '--exclude-dir=*dist*'"
-
 source $ZSH/oh-my-zsh.sh
 
+alias l='ls -lah --group-directories-first'
+alias groot='cd $(git rev-parse --show-toplevel)'
+alias grep="grep"\
+" --color=auto"\
+" --exclude-dir={.git,.idea,node_modules,dist,target,build,.venv}"
