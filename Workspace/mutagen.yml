@@ -9,6 +9,7 @@ sync:
         - "__pycache__"
         - "build"
         - "dist"
+        - "target"
         - "node_modules"
         - "*.iml"
         - "*.swp"
