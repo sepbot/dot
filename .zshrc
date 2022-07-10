@@ -25,7 +25,6 @@ export PATH="$HOME/.local/bin:$PATH"
   export PATH="$HOME/.local/brew/bin:$HOME/.local/brew/sbin:$PATH" && \
   export PATH="$PATH:$HOME/.local/brew_x86/bin:$HOME/.local/brew_x86/sbin" && \
   alias brow="arch -x86_64 $HOME/.local/brew_x86/bin/brew" && \
-  alias ls='gls --color' && \
   alias date='gdate'
 
 export CARGO_HOME="$HOME/.local/cargo"
@@ -54,6 +53,13 @@ export YARN_CACHE_FOLDER="$HOME/.cache/yarn"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 source $ZSH/oh-my-zsh.sh
+
+# now to undo the damage
+unalias ls
+unalias grep
+
+[ $(uname -s) = "Darwin" ] && \
+  alias ls='gls --color'
 
 alias l='ls -lah --group-directories-first'
 alias groot='cd $(git rev-parse --show-toplevel)'
