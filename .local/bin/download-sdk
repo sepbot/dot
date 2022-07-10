@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+set -e
+
+SDK_NAME=$1
+SDK_VERSION=$2
+
+if [ -z "$SDK_NAME" ] || [ -z "$SDK_VERSION" ]; then
+  echo "download-sdk <sdk-name> <sdk-version>"
+  exit 1
+fi
+
+if [ -d "$HOME/.local/${SDK_NAME}/${SDK_VERSION}" ]; then
+  exit 0
+fi
+
+function download_node {
+  local folder_name=""
+  local archive_name=""
+
+  case $(uname) in
+  Linux)
+    folder_name="node-v${SDK_VERSION}-linux-x64";;
+  Darwin)
+    folder_name="node-v${SDK_VERSION}-darwin-arm64";;
+  *)
+    echo "platform not supported: $(uname)"
+  esac
+
+  local archive_name="${folder_name}.tar.xz"
+
+  wget -O "/tmp/${archive_name}" "https://nodejs.org/dist/v${SDK_VERSION}/${archive_name}"
+  tar xf "/tmp/${archive_name}" -C /tmp
+  mv "/tmp/${folder_name}" "$HOME/.local/node/${SDK_VERSION}"
+  rm -rf "/tmp/${archive_name}"
+}
+
+function download_go {
+  local folder_name=""
+  local archive_name=""
+
+  case $(uname) in
+  Linux)
+    folder_name="go${SDK_VERSION}.linux-amd64";;
+  Darwin)
+    folder_name="go${SDK_VERSION}.darwin-arm64";;
+  *)
+    echo "platform not supported: $(uname)"
+  esac
+
+  local archive_name="${folder_name}.tar.gz"
+
+  wget -O "/tmp/${archive_name}" "https://go.dev/dl/${archive_name}"
+  mkdir "/tmp/${folder_name}"
+  tar xzf "/tmp/${archive_name}" -C "/tmp/${folder_name}"
+  mv "/tmp/${folder_name}/go" "$HOME/.local/go/${SDK_VERSION}"
+  rm -rf "/tmp/${folder_name}" "/tmp/${archive_name}"
+}
+
+mkdir -p "$HOME/.local/${SDK_NAME}"
+
+case $SDK_NAME in
+node)
+  download_node;;
+go)
+  download_go;;
+*)
+  echo "unknown sdk: ${SDK_NAME}"
+  exit 1
+esac
