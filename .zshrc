@@ -7,7 +7,7 @@ ZSH_THEME="custom"
 CASE_SENSITIVE="true"
 
 [ -d "$HOME/.brew/share/zsh/site-functions" ] && \
-  export FPATH=$HOME/.brew/share/zsh/site-functions:$FPATH
+  export FPATH="${HOME}/.brew/share/zsh/site-functions:${FPATH}"
 
 plugins=(git zsh-autosuggestions)
 
@@ -39,10 +39,6 @@ export RUSTUP_HOME="$HOME/.cache/rustup"
 (( $+commands[dot] )) && export GRAPHVIZ_DOT="$(which dot)"
 (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
 (( $+commands[pyenv] )) && eval "$(pyenv init --path)"
-
-(( $+commands[go] )) && \
-  export GOROOT=$(dirname $(dirname $(realpath $(which go)))) && \
-  export GOPATH="$HOME/.cache/go"
 
 (( $+commands[aws] )) && \
   export AWS_CONFIG_FILE="$HOME/Workspace/.aws/config" && \
