@@ -55,9 +55,9 @@ unalias ls
 unalias grep
 
 [ $(uname -s) = "Darwin" ] && \
-  alias ls='gls --color'
+  alias ls='gls'
 
-alias l='ls -lah --group-directories-first'
+alias l='ls -ahlv --group-directories-first --color=auto'
 alias groot='cd $(git rev-parse --show-toplevel)'
 alias grep="grep"\
 " --color=auto"\
