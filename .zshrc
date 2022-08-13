@@ -21,6 +21,10 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export EDITOR=vim
 export PATH="$HOME/.local/bin:$PATH"
 
+[ $(uname -s) = "Linux" ] && \
+  alias docker-sucks="$(which docker)" && \
+  alias docker="podman"
+
 [ $(uname -s) = "Darwin" ] && \
   export PATH="$HOME/.local/brew/bin:$HOME/.local/brew/sbin:$PATH" && \
   export PATH="$PATH:$HOME/.local/brew_x86/bin:$HOME/.local/brew_x86/sbin" && \
