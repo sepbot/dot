@@ -23,7 +23,9 @@ export PATH="$HOME/.local/bin:$PATH"
 
 [ $(uname -s) = "Linux" ] && \
   alias docker-sucks="$(which docker)" && \
-  alias docker="podman"
+  alias docker="podman" && \
+  alias docker-compose="podman-compose"
+
 
 [ $(uname -s) = "Darwin" ] && \
   export PATH="$HOME/.local/brew/bin:$HOME/.local/brew/sbin:$PATH" && \
