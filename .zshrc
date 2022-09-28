@@ -33,6 +33,10 @@ export PATH="$HOME/.local/bin:$PATH"
   alias brow="arch -x86_64 $HOME/.local/brew_x86/bin/brew" && \
   alias date='gdate'
 
+# https://github.com/microsoft/wslg/issues/818
+[[ $(uname -r) == *WSL2 ]] && \
+  export DISPLAY=:$(ls /tmp/.X11-unix/ | cut -d "X" -f2)
+
 export CARGO_HOME="$HOME/.local/cargo"
 export RUSTUP_HOME="$HOME/.cache/rustup"
 [ -d "$CARGO_HOME" ] && \
