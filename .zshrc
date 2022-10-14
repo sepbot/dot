@@ -42,12 +42,13 @@ export RUSTUP_HOME="$HOME/.cache/rustup"
   export PATH="$CARGO_HOME/bin:$PATH" && \
   source "$CARGO_HOME/env"
 
-[ -d "$XDG_DATA_HOME/JetBrains/Toolbox/scripts" ] && \
-  export PATH="$XDG_DATA_HOME/JetBrains/Toolbox/scripts:$PATH"
-
 (( $+commands[dot] )) && export GRAPHVIZ_DOT="$(which dot)"
 (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
 (( $+commands[pyenv] )) && eval "$(pyenv init --path)"
+
+(( $+commands[poetry] )) && \
+  export POETRY_VIRTUALENVS_IN_PROJECT="true" && \
+  export POETRY_VIRTUALENVS_PREFER_ACTIVE_PYTHON="true"
 
 (( $+commands[aws] )) && \
   export AWS_CONFIG_FILE="$HOME/Workspace/.aws/config" && \
