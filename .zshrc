@@ -31,7 +31,8 @@ export PATH="$HOME/.local/bin:$PATH"
   export PATH="$HOME/.local/brew/bin:$HOME/.local/brew/sbin:$PATH" && \
   export PATH="$PATH:$HOME/.local/brew_x86/bin:$HOME/.local/brew_x86/sbin" && \
   alias brow="arch -x86_64 $HOME/.local/brew_x86/bin/brew" && \
-  alias date='gdate'
+  alias date='gdate' && \
+  alias sed='gsed'
 
 [[ $(uname -r) == *WSL2 ]] && \
   export DISPLAY="vsock/:0"
