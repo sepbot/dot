@@ -9,9 +9,9 @@ use_go() {
   local sdk_path="$HOME/.local/go/$1"
   download-sdk go $1
 
-  export PATH="$sdk_path/bin:$PATH"
   export GOROOT="$sdk_path"
   export GOPATH="$HOME/.cache/go"
+  export PATH="${GOROOT}/bin:${GOPATH}/bin:$PATH"
 }
 
 cmd_date() {
