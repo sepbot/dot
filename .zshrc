@@ -6,9 +6,6 @@ export ZSH=~/.local/ohmyzsh
 ZSH_THEME="custom"
 CASE_SENSITIVE="true"
 
-[ -d "$HOME/.brew/share/zsh/site-functions" ] && \
-  export FPATH="${HOME}/.brew/share/zsh/site-functions:${FPATH}"
-
 plugins=(git zsh-autosuggestions)
 
 umask 0077
@@ -30,7 +27,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 [ $(uname -s) = "Darwin" ] && \
   export PATH="$HOME/.local/brew/bin:$HOME/.local/brew/sbin:$PATH" && \
-  alias brow="arch -x86_64 $HOME/.local/brew_x86/bin/brew" && \
   alias date='gdate' && \
   alias sed='gsed'
 
@@ -46,6 +42,11 @@ export RUSTUP_HOME="$HOME/.cache/rustup"
 (( $+commands[dot] )) && export GRAPHVIZ_DOT="$(which dot)"
 (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
 (( $+commands[pyenv] )) && eval "$(pyenv init --path)"
+
+(( $+commands[brew] )) && \
+  [ -d "$(brew --prefix)/share/zsh/site-functions" ] && \
+  export FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}" && \
+  autoload -Uz compinit && compinit
 
 (( $+commands[poetry] )) && \
   export POETRY_VIRTUALENVS_IN_PROJECT="true" && \
