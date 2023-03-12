@@ -20,8 +20,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 [ $(uname -s) = "Linux" ] && \
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH" && \
-  alias docker="podman" && \
-  alias docker-compose="podman-compose" && \
   alias pyenv="CPPFLAGS=-I$(brew --prefix openssl)/include LDFLAGS=-L$(brew --prefix openssl)/lib pyenv"
 
 [ $(uname -s) = "Darwin" ] && \
